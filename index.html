@@ -2,9 +2,9 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Three.js Visualization - Part 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Visualization</title>
     <style>
         * {
             margin: 0;
@@ -46,7 +46,8 @@
         }
 
         .control-group input[type="range"],
-        .control-group input[type="color"] {
+        .control-group input[type="color"],
+        .control-group input[type="number"] {
             width: 100%;
         }
 
@@ -63,27 +64,80 @@
 
 <body>
     <div id="canvas-container"></div>
-
     <div id="controls">
         <h3>Управление сценой</h3>
 
         <div class="control-group">
-            <label for="dirLightIntensity">Интенсивность направленного света</label>
+            <label>Интенсивность направленного света</label>
             <input type="range" id="dirLightIntensity" min="0" max="5" step="0.1" value="1">
-            <span class="value-display" id="dirLightIntensityValue">1.0</span>
+            <span class="value-display" id="dirLightIntensityValue">1</span>
         </div>
 
         <div class="control-group">
-            <label for="pointLightColor">Цвет точечного света</label>
+            <label>Цвет точечного света</label>
             <input type="color" id="pointLightColor" value="#ff9500">
         </div>
 
         <div class="control-group">
-            <label for="cubeColor">Цвет куба</label>
+            <label>Цвет куба</label>
             <input type="color" id="cubeColor" value="#ff6b6b">
         </div>
-    </div>
 
+        <div class="control-group">
+            <label>Загрузить модель</label>
+            <input type="file" id="modelFile" accept=".obj,.gltf,.glb,.fbx">
+        </div>
+
+        <div class="control-group">
+            <label>Выбрать объект</label>
+            <select id="objectSelect">
+                <option value="">-- Выберите объект --</option>
+            </select>
+        </div>
+
+        <div id="transformControls" style="display: none;">
+            <h4>Трансформация</h4>
+
+            <div class="control-group">
+                <label>Позиция X</label>
+                <input type="number" id="posX" step="0.1" value="0">
+            </div>
+            <div class="control-group">
+                <label>Позиция Y</label>
+                <input type="number" id="posY" step="0.1" value="0">
+            </div>
+            <div class="control-group">
+                <label>Позиция Z</label>
+                <input type="number" id="posZ" step="0.1" value="0">
+            </div>
+
+            <div class="control-group">
+                <label>Поворот X (градусы)</label>
+                <input type="number" id="rotX" step="1" value="0">
+            </div>
+            <div class="control-group">
+                <label>Поворот Y (градусы)</label>
+                <input type="number" id="rotY" step="1" value="0">
+            </div>
+            <div class="control-group">
+                <label>Поворот Z (градусы)</label>
+                <input type="number" id="rotZ" step="1" value="0">
+            </div>
+
+            <div class="control-group">
+                <label>Масштаб X</label>
+                <input type="number" id="scaleX" step="0.1" value="1" min="0.1">
+            </div>
+            <div class="control-group">
+                <label>Масштаб Y</label>
+                <input type="number" id="scaleY" step="0.1" value="1" min="0.1">
+            </div>
+            <div class="control-group">
+                <label>Масштаб Z</label>
+                <input type="number" id="scaleZ" step="0.1" value="1" min="0.1">
+            </div>
+        </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
 </body>
 
